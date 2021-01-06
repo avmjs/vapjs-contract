@@ -1,18 +1,18 @@
-const abi = require('ethjs-abi'); // eslint-disable-line
+const abi = require('vapjs-abi'); // eslint-disable-line
 const keccak256 = require('js-sha3').keccak_256; // eslint-disable-line
-const EthFilter = require('ethjs-filter'); // eslint-disable-line
-const getKeys = require('ethjs-util').getKeys; // eslint-disable-line
+const VapFilter = require('vapjs-filter'); // eslint-disable-line
+const getKeys = require('vapjs-util').getKeys; // eslint-disable-line
 const Contract = require('./contract');
 const hasTransactionObject = require('./has-tx-object');
 
-module.exports = EthContract;
+module.exports = VapContract;
 
-function EthContract(query) {
+function VapContract(query) {
   return function contractFactory(contractABI, contractBytecode, contractDefaultTxObject) {
     // validate params
-    if (!Array.isArray(contractABI)) { throw new Error(`[ethjs-contract] Contract ABI must be type Array, got type ${typeof contractABI}`); }
-    if (typeof contractBytecode !== 'undefined' && typeof contractBytecode !== 'string') { throw new Error(`[ethjs-contract] Contract bytecode must be type String, got type ${typeof contractBytecode}`); }
-    if (typeof contractDefaultTxObject !== 'undefined' && typeof contractDefaultTxObject !== 'object') { throw new Error(`[ethjs-contract] Contract default tx object must be type Object, got type ${typeof contractABI}`); }
+    if (!Array.isArray(contractABI)) { throw new Error(`[vapjs-contract] Contract ABI must be type Array, got type ${typeof contractABI}`); }
+    if (typeof contractBytecode !== 'undefined' && typeof contractBytecode !== 'string') { throw new Error(`[vapjs-contract] Contract bytecode must be type String, got type ${typeof contractBytecode}`); }
+    if (typeof contractDefaultTxObject !== 'undefined' && typeof contractDefaultTxObject !== 'object') { throw new Error(`[vapjs-contract] Contract default tx object must be type Object, got type ${typeof contractABI}`); }
 
     // build contract object
     const output = {};

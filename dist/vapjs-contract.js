@@ -3,11 +3,11 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define("EthContract", [], factory);
+		define("VapContract", [], factory);
 	else if(typeof exports === 'object')
-		exports["EthContract"] = factory();
+		exports["VapContract"] = factory();
 	else
-		root["EthContract"] = factory();
+		root["VapContract"] = factory();
 })(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -2868,7 +2868,7 @@ function Result() {}
 
 function encodeParams(types, values) {
   if (types.length !== values.length) {
-    throw new Error('[ethjs-abi] while encoding params, types/values mismatch, Your contract requires ' + types.length + ' types (arguments), and you passed in ' + values.length);
+    throw new Error('[vapjs-abi] while encoding params, types/values mismatch, Your contract requires ' + types.length + ' types (arguments), and you passed in ' + values.length);
   }
 
   var parts = [];
@@ -3073,7 +3073,7 @@ function constructFilter(filterName, query) {
                 }
               });
             } catch (decodingErrorMesage) {
-              decodingError = new Error('[ethjs-filter] while decoding filter change event data from RPC \'' + JSON.stringify(decodedChangeResults) + '\': ' + decodingErrorMesage);
+              decodingError = new Error('[vapjs-filter] while decoding filter change event data from RPC \'' + JSON.stringify(decodedChangeResults) + '\': ' + decodingErrorMesage);
             }
           }
 
@@ -3187,21 +3187,21 @@ function constructFilter(filterName, query) {
 }
 
 /**
- * EthFilter constructor, intakes a query, helps manage filter event polling
+ * VapFilter constructor, intakes a query, helps manage filter event polling
  *
- * @method EthFilter
- * @param {Object} query the `ethjs-query` or `eth-query` object
- * @returns {Object} output an EthFilter instance
+ * @method VapFilter
+ * @param {Object} query the `vapjs-query` or `vap-query` object
+ * @returns {Object} output an VapFilter instance
  * @throws error if new is not used
  */
 
-function EthFilter(query) {
+function VapFilter(query) {
   var self = this;
-  if (!(self instanceof EthFilter)) {
-    throw new Error('the EthFilter object must be instantiated with `new` flag.. (e.g. `const filters = new EthFilter(query);`)');
+  if (!(self instanceof VapFilter)) {
+    throw new Error('the VapFilter object must be instantiated with `new` flag.. (e.g. `const filters = new VapFilter(query);`)');
   }
   if (typeof query !== 'object') {
-    throw new Error('the EthFilter object must be instantiated with an EthQuery instance (e.g. `const filters = new EthFilter(new EthQuery(provider));`). See github.com/ethjs/ethjs-query for more details..');
+    throw new Error('the VapFilter object must be instantiated with an VapQuery instance (e.g. `const filters = new VapFilter(new VapQuery(provider));`). See github.com/vapjs/vapjs-query for more details..');
   }
 
   self.Filter = constructFilter('Filter', query);
@@ -3209,8 +3209,8 @@ function EthFilter(query) {
   self.PendingTransactionFilter = constructFilter('PendingTransactionFilter', query);
 }
 
-// export EthFilter
-module.exports = EthFilter;
+// export VapFilter
+module.exports = VapFilter;
 
 /***/ },
 /* 31 */
@@ -3231,7 +3231,7 @@ function padToEven(value) {
   var a = value; // eslint-disable-line
 
   if (typeof a !== 'string') {
-    throw new Error('[ethjs-util] while padding to even, value must be string, is currently ' + typeof a + ', while padToEven.');
+    throw new Error('[vapjs-util] while padding to even, value must be string, is currently ' + typeof a + ', while padToEven.');
   }
 
   if (a.length % 2) {
@@ -3270,7 +3270,7 @@ function intToBuffer(i) {
  */
 function getBinarySize(str) {
   if (typeof str !== 'string') {
-    throw new Error('[ethjs-util] while getting binary size, method getBinarySize requires input \'str\' to be type String, got \'' + typeof str + '\'.');
+    throw new Error('[vapjs-util] while getting binary size, method getBinarySize requires input \'str\' to be type String, got \'' + typeof str + '\'.');
   }
 
   return Buffer.byteLength(str, 'utf8');
@@ -3287,10 +3287,10 @@ function getBinarySize(str) {
  */
 function arrayContainsArray(superset, subset, some) {
   if (Array.isArray(superset) !== true) {
-    throw new Error('[ethjs-util] method arrayContainsArray requires input \'superset\' to be an array got type \'' + typeof superset + '\'');
+    throw new Error('[vapjs-util] method arrayContainsArray requires input \'superset\' to be an array got type \'' + typeof superset + '\'');
   }
   if (Array.isArray(subset) !== true) {
-    throw new Error('[ethjs-util] method arrayContainsArray requires input \'subset\' to be an array got type \'' + typeof subset + '\'');
+    throw new Error('[vapjs-util] method arrayContainsArray requires input \'subset\' to be an array got type \'' + typeof subset + '\'');
   }
 
   return subset[Boolean(some) && 'some' || 'every'](function (value) {
@@ -3380,10 +3380,10 @@ function fromAscii(stringValue) {
  */
 function getKeys(params, key, allowEmpty) {
   if (!Array.isArray(params)) {
-    throw new Error('[ethjs-util] method getKeys expecting type Array as \'params\' input, got \'' + typeof params + '\'');
+    throw new Error('[vapjs-util] method getKeys expecting type Array as \'params\' input, got \'' + typeof params + '\'');
   }
   if (typeof key !== 'string') {
-    throw new Error('[ethjs-util] method getKeys expecting type String for input \'key\' got \'' + typeof key + '\'.');
+    throw new Error('[vapjs-util] method getKeys expecting type String for input \'key\' got \'' + typeof key + '\'.');
   }
 
   var result = []; // eslint-disable-line
@@ -7292,7 +7292,7 @@ function _interopRequireDefault(obj) {
 }
 
 var abi = __webpack_require__(29); // eslint-disable-line
-var EthFilter = __webpack_require__(30); // eslint-disable-line
+var VapFilter = __webpack_require__(30); // eslint-disable-line
 var getKeys = __webpack_require__(31).getKeys; // eslint-disable-line
 var keccak256 = __webpack_require__(16).keccak_256; // eslint-disable-line
 var hasTransactionObject = __webpack_require__(27);
@@ -7343,7 +7343,7 @@ function Contract() {
             case 15:
               _context.prev = 15;
               _context.t0 = _context['catch'](10);
-              decodingError = new Error('[ethjs-contract] while formatting incoming raw call data ' + (0, _stringify2['default'])(queryResult) + ' ' + _context.t0);
+              decodingError = new Error('[vapjs-contract] while formatting incoming raw call data ' + (0, _stringify2['default'])(queryResult) + ' ' + _context.t0);
               throw decodingError;
 
             case 19:
@@ -7370,7 +7370,7 @@ function Contract() {
   self.address = opts.address || '0x';
   self.bytecode = opts.contractBytecode || '0x';
   self.defaultTxObject = opts.contractDefaultTxObject || {};
-  self.filters = new EthFilter(self.query);
+  self.filters = new VapFilter(self.query);
 
   getCallableMethodsFromABI(self.abi).forEach(function (methodObject) {
     if (methodObject.type === 'function') {
@@ -7446,24 +7446,24 @@ function _interopRequireDefault(obj) {
 
 var abi = __webpack_require__(29); // eslint-disable-line
 var keccak256 = __webpack_require__(16).keccak_256; // eslint-disable-line
-var EthFilter = __webpack_require__(30); // eslint-disable-line
+var VapFilter = __webpack_require__(30); // eslint-disable-line
 var getKeys = __webpack_require__(31).getKeys; // eslint-disable-line
 var Contract = __webpack_require__(50);
 var hasTransactionObject = __webpack_require__(27);
 
-module.exports = EthContract;
+module.exports = VapContract;
 
-function EthContract(query) {
+function VapContract(query) {
   return function contractFactory(contractABI, contractBytecode, contractDefaultTxObject) {
     // validate params
     if (!Array.isArray(contractABI)) {
-      throw new Error('[ethjs-contract] Contract ABI must be type Array, got type ' + typeof contractABI);
+      throw new Error('[vapjs-contract] Contract ABI must be type Array, got type ' + typeof contractABI);
     }
     if (typeof contractBytecode !== 'undefined' && typeof contractBytecode !== 'string') {
-      throw new Error('[ethjs-contract] Contract bytecode must be type String, got type ' + typeof contractBytecode);
+      throw new Error('[vapjs-contract] Contract bytecode must be type String, got type ' + typeof contractBytecode);
     }
     if (typeof contractDefaultTxObject !== 'undefined' && typeof contractDefaultTxObject !== 'object') {
-      throw new Error('[ethjs-contract] Contract default tx object must be type Object, got type ' + typeof contractABI);
+      throw new Error('[vapjs-contract] Contract default tx object must be type Object, got type ' + typeof contractABI);
     }
 
     // build contract object
@@ -8765,7 +8765,7 @@ var BN = __webpack_require__(32);
 var numberToBN = __webpack_require__(103);
 var keccak256 = __webpack_require__(16).keccak_256;
 
-// from ethereumjs-util
+// from vaporyjs-util
 function stripZeros(aInput) {
   var a = aInput; // eslint-disable-line
   var first = a[0]; // eslint-disable-line
@@ -8799,8 +8799,8 @@ function hexOrBuffer(valueInput, name) {
   var value = valueInput; // eslint-disable-line
   if (!Buffer.isBuffer(value)) {
     if (!isHexString(value)) {
-      var error = new Error(name ? '[ethjs-abi] invalid ' + name : '[ethjs-abi] invalid hex or buffer, must be a prefixed alphanumeric even length hex string');
-      error.reason = '[ethjs-abi] invalid hex string, hex must be prefixed and alphanumeric (e.g. 0x023..)';
+      var error = new Error(name ? '[vapjs-abi] invalid ' + name : '[vapjs-abi] invalid hex or buffer, must be a prefixed alphanumeric even length hex string');
+      error.reason = '[vapjs-abi] invalid hex string, hex must be prefixed and alphanumeric (e.g. 0x023..)';
       error.value = value;
       throw error;
     }
@@ -8831,7 +8831,7 @@ function getKeys(params, key, allowEmpty) {
   var result = []; // eslint-disable-line
 
   if (!Array.isArray(params)) {
-    throw new Error('[ethjs-abi] while getting keys, invalid params value ' + JSON.stringify(params));
+    throw new Error('[vapjs-abi] while getting keys, invalid params value ' + JSON.stringify(params));
   }
 
   for (var i = 0; i < params.length; i++) {
@@ -8840,7 +8840,7 @@ function getKeys(params, key, allowEmpty) {
     if (allowEmpty && !value) {
       value = '';
     } else if (typeof value !== 'string') {
-      throw new Error('[ethjs-abi] while getKeys found invalid ABI data structure, type value not string');
+      throw new Error('[vapjs-abi] while getKeys found invalid ABI data structure, type value not string');
     }
     result.push(value);
   }
@@ -8915,7 +8915,7 @@ function coderFixedBytes(length) {
     },
     decode: function decodeFixedBytes(data, offset) {
       if (data.length !== 0 && data.length < offset + 32) {
-        throw new Error('[ethjs-abi] while decoding fixed bytes, invalid bytes data length: ' + length);
+        throw new Error('[vapjs-abi] while decoding fixed bytes, invalid bytes data length: ' + length);
       }
 
       return {
@@ -8931,7 +8931,7 @@ var coderAddress = {
     var value = valueInput; // eslint-disable-line
     var result = new Buffer(32); // eslint-disable-line
     if (!isHexString(value, 20)) {
-      throw new Error('[ethjs-abi] while encoding address, invalid address value, not alphanumeric 20 byte hex string');
+      throw new Error('[vapjs-abi] while encoding address, invalid address value, not alphanumeric 20 byte hex string');
     }
     value = hexOrBuffer(value);
     result.fill(0);
@@ -8946,7 +8946,7 @@ var coderAddress = {
       };
     }
     if (data.length !== 0 && data.length < offset + 32) {
-      throw new Error('[ethjs-abi] while decoding address data, invalid address data, invalid byte length ' + data.length);
+      throw new Error('[vapjs-abi] while decoding address data, invalid address data, invalid byte length ' + data.length);
     }
     return {
       consumed: 32,
@@ -8965,13 +8965,13 @@ function encodeDynamicBytesHelper(value) {
 
 function decodeDynamicBytesHelper(data, offset) {
   if (data.length !== 0 && data.length < offset + 32) {
-    throw new Error('[ethjs-abi] while decoding dynamic bytes data, invalid bytes length: ' + data.length + ' should be less than ' + (offset + 32));
+    throw new Error('[vapjs-abi] while decoding dynamic bytes data, invalid bytes length: ' + data.length + ' should be less than ' + (offset + 32));
   }
 
   var length = uint256Coder.decode(data, offset).value; // eslint-disable-line
   length = length.toNumber();
   if (data.length !== 0 && data.length < offset + 32 + length) {
-    throw new Error('[ethjs-abi] while decoding dynamic bytes data, invalid bytes length: ' + data.length + ' should be less than ' + (offset + 32 + length));
+    throw new Error('[vapjs-abi] while decoding dynamic bytes data, invalid bytes length: ' + data.length + ' should be less than ' + (offset + 32 + length));
   }
 
   return {
@@ -9011,7 +9011,7 @@ function coderArray(coder, lengthInput) {
       var length = lengthInput; // eslint-disable-line
 
       if (!Array.isArray(value)) {
-        throw new Error('[ethjs-abi] while encoding array, invalid array data, not type Object (Array)');
+        throw new Error('[vapjs-abi] while encoding array, invalid array data, not type Object (Array)');
       }
 
       if (length === -1) {
@@ -9020,7 +9020,7 @@ function coderArray(coder, lengthInput) {
       }
 
       if (length !== value.length) {
-        throw new Error('[ethjs-abi] while encoding array, size mismatch array length ' + length + ' does not equal ' + value.length);
+        throw new Error('[vapjs-abi] while encoding array, size mismatch array length ' + length + ' does not equal ' + value.length);
       }
 
       value.forEach(function (resultValue) {
@@ -9071,7 +9071,7 @@ var paramTypePart = new RegExp(/^((u?int|bytes)([0-9]*)|(address|bool|string)|(\
 function getParamCoder(typeInput) {
   var type = typeInput; // eslint-disable-line
   var coder = null; // eslint-disable-line
-  var invalidTypeErrorMessage = '[ethjs-abi] while getting param coder (getParamCoder) type value ' + JSON.stringify(type) + ' is either invalid or unsupported by ethjs-abi.';
+  var invalidTypeErrorMessage = '[vapjs-abi] while getting param coder (getParamCoder) type value ' + JSON.stringify(type) + ' is either invalid or unsupported by vapjs-abi.';
 
   while (type) {
     var part = type.match(paramTypePart); // eslint-disable-line
@@ -9088,7 +9088,7 @@ function getParamCoder(typeInput) {
         }
         var intSize = parseInt(part[3] || 256); // eslint-disable-line
         if (intSize === 0 || intSize > 256 || intSize % 8 !== 0) {
-          throw new Error('[ethjs-abi] while getting param coder for type ' + type + ', invalid ' + prefix + '<N> width: ' + type);
+          throw new Error('[vapjs-abi] while getting param coder for type ' + type + ', invalid ' + prefix + '<N> width: ' + type);
         }
 
         coder = coderNumber(intSize / 8, prefix === 'int');
@@ -9115,7 +9115,7 @@ function getParamCoder(typeInput) {
         if (part[3]) {
           var size = parseInt(part[3]); // eslint-disable-line
           if (size === 0 || size > 32) {
-            throw new Error('[ethjs-abi] while getting param coder for prefix bytes, invalid type ' + type + ', size ' + size + ' should be 0 or greater than 32');
+            throw new Error('[vapjs-abi] while getting param coder for prefix bytes, invalid type ' + type + ', size ' + size + ' should be 0 or greater than 32');
           }
           coder = coderFixedBytes(size);
         } else {
@@ -10559,4 +10559,4 @@ module.exports = function(module) {
 /******/ ])
 });
 ;
-//# sourceMappingURL=ethjs-contract.js.map
+//# sourceMappingURL=vapjs-contract.js.map

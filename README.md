@@ -1,32 +1,32 @@
-## ethjs-contract
+## vapjs-contract
 
 <div>
   <!-- Dependency Status -->
-  <a href="https://david-dm.org/ethjs/ethjs-contract">
-    <img src="https://david-dm.org/ethjs/ethjs-contract.svg"
+  <a href="https://david-dm.org/vapjs/vapjs-contract">
+    <img src="https://david-dm.org/vapjs/vapjs-contract.svg"
     alt="Dependency Status" />
   </a>
 
   <!-- devDependency Status -->
-  <a href="https://david-dm.org/ethjs/ethjs-contract#info=devDependencies">
-    <img src="https://david-dm.org/ethjs/ethjs-contract/dev-status.svg" alt="devDependency Status" />
+  <a href="https://david-dm.org/vapjs/vapjs-contract#info=devDependencies">
+    <img src="https://david-dm.org/vapjs/vapjs-contract/dev-status.svg" alt="devDependency Status" />
   </a>
 
   <!-- Build Status -->
-  <a href="https://travis-ci.org/ethjs/ethjs-contract">
-    <img src="https://travis-ci.org/ethjs/ethjs-contract.svg"
+  <a href="https://travis-ci.org/vapjs/vapjs-contract">
+    <img src="https://travis-ci.org/vapjs/vapjs-contract.svg"
     alt="Build Status" />
   </a>
 
   <!-- NPM Version -->
-  <a href="https://www.npmjs.org/package/ethjs-contract">
-    <img src="http://img.shields.io/npm/v/ethjs-contract.svg"
+  <a href="https://www.npmjs.org/package/vapjs-contract">
+    <img src="http://img.shields.io/npm/v/vapjs-contract.svg"
     alt="NPM version" />
   </a>
 
   <!-- Test Coverage -->
-  <a href="https://coveralls.io/r/ethjs/ethjs-contract">
-    <img src="https://coveralls.io/repos/github/ethjs/ethjs-contract/badge.svg" alt="Test Coverage" />
+  <a href="https://coveralls.io/r/vapjs/vapjs-contract">
+    <img src="https://coveralls.io/repos/github/vapjs/vapjs-contract/badge.svg" alt="Test Coverage" />
   </a>
 
   <!-- Javascript Style -->
@@ -37,24 +37,24 @@
 
 <br />
 
-A simple contract module for the Ethereum RPC layer.
+A simple contract module for the Vapory RPC layer.
 
 NOTE. Module not ready for use, still in heavy development.
 
 ## Install
 
 ```
-npm install --save ethjs-contract
+npm install --save vapjs-contract
 ```
 
 ## Usage
 
 ```js
-const HttpProvider = require('ethjs-provider-http');
-const Eth = require('ethjs-query');
-const EthContract = require('ethjs-contract');
-const eth = new Eth(new HttpProvider('http://localhost:8545'));
-const contract = new EthContract(eth);
+const HttpProvider = require('vapjs-provider-http');
+const Vap = require('vapjs-query');
+const VapContract = require('vapjs-contract');
+const vap = new Vap(new HttpProvider('http://localhost:8545'));
+const contract = new VapContract(vap);
 
 const SimpleStore = contract(abi, bytecode, defaultTxObject);
 const simpleStore = SimpleStore.at('0x000...');
@@ -87,7 +87,7 @@ filter.uninstall()
 
 ## About
 
-A simple contract object for the Ethereum RPC layer.
+A simple contract object for the Vapory RPC layer.
 
 ## Contributing
 
@@ -95,32 +95,32 @@ Please help better the ecosystem by submitting issues and pull requests to defau
 
 ## Guides
 
-You'll find more detailed information on using `ethjs-contract` and tailoring it to your needs in our guides:
+You'll find more detailed information on using `vapjs-contract` and tailoring it to your needs in our guides:
 
 - [User guide](docs/user-guide.md) - Usage, configuration, FAQ and complementary tools.
-- [Developer guide](docs/developer-guide.md) - Contributing to `ethjs-contract` and writing your own code and coverage.
+- [Developer guide](docs/developer-guide.md) - Contributing to `vapjs-contract` and writing your own code and coverage.
 
 ## Help out
 
 There is always a lot of work to do, and will have many rules to maintain. So please help out in any way that you can:
 
-- Create, enhance, and debug ethjs rules (see our guide to ["Working on rules"](./github/CONTRIBUTING.md)).
+- Create, enhance, and debug vapjs rules (see our guide to ["Working on rules"](./github/CONTRIBUTING.md)).
 - Improve documentation.
 - Chime in on any open issue or pull request.
-- Open new issues about your ideas for making `ethjs-contract` better, and pull requests to show us how your idea works.
+- Open new issues about your ideas for making `vapjs-contract` better, and pull requests to show us how your idea works.
 - Add new tests to *absolutely anything*.
 - Create or contribute to ecosystem tools, like modules for encoding or contracts.
 - Spread the word.
 
 Please consult our [Code of Conduct](CODE_OF_CONDUCT.md) docs before helping out.
 
-We communicate via [issues](https://github.com/ethjs/ethjs-contract/issues) and [pull requests](https://github.com/ethjs/ethjs-contract/pulls).
+We communicate via [issues](https://github.com/vapjs/vapjs-contract/issues) and [pull requests](https://github.com/vapjs/vapjs-contract/pulls).
 
 ## Important documents
 
 - [Changelog](CHANGELOG.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
-- [License](https://raw.githubusercontent.com/ethjs/ethjs-contract/master/LICENSE)
+- [License](https://raw.githubusercontent.com/vapjs/vapjs-contract/master/LICENSE)
 
 ## Licence
 

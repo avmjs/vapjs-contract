@@ -74,17 +74,17 @@
     }
   },
   "bugs": {
-    "url": "https://github.com/ethjs/ethjs-contract/issues"
+    "url": "https://github.com/vapjs/vapjs-contract/issues"
   },
   "bundleDependencies": false,
   "dependencies": {
-    "ethjs-abi": "0.2.0",
-    "ethjs-filter": "0.1.7",
-    "ethjs-util": "0.1.3",
+    "vapjs-abi": "0.2.0",
+    "vapjs-filter": "0.1.7",
+    "vapjs-util": "0.1.3",
     "js-sha3": "0.5.5"
   },
   "deprecated": false,
-  "description": "A simple contract object for the Ethereum RPC.",
+  "description": "A simple contract object for the Vapory RPC.",
   "devDependencies": {
     "async": "^2.6.0",
     "babel-cli": "6.18.0",
@@ -126,9 +126,9 @@
     "eslint-plugin-import": "1.8.0",
     "eslint-plugin-jsx-a11y": "1.2.0",
     "eslint-plugin-react": "5.1.1",
-    "ethereumjs-testrpc": "3.0.2",
-    "ethjs-provider-http": "0.1.3",
-    "ethjs-query": "^0.3.6",
+    "vaporyjs-testrpc": "3.0.2",
+    "vapjs-provider-http": "0.1.3",
+    "vapjs-query": "^0.3.6",
     "eventsource-polyfill": "0.9.6",
     "ganache-core": "^2.1.0",
     "hard-rejection": "^1.0.0",
@@ -187,9 +187,9 @@
     "lib",
     "src"
   ],
-  "homepage": "https://github.com/ethjs/ethjs-contract#readme",
+  "homepage": "https://github.com/vapjs/vapjs-contract#readme",
   "keywords": [
-    "ethereum",
+    "vapory",
     "events",
     "rpc"
   ],
@@ -198,11 +198,11 @@
     "lint:eslint": "*.js"
   },
   "main": "lib/index.js",
-  "name": "ethjs-contract",
+  "name": "vapjs-contract",
   "pre-commit": "build",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/ethjs/ethjs-contract.git"
+    "url": "git+ssh://git@github.com/vapjs/vapjs-contract.git"
   },
   "scripts": {
     "build": "npm run build:commonjs && npm run test:lib && npm run build:umd && npm run build:umd:min",

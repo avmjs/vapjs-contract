@@ -2,22 +2,22 @@
 
 1. Bn formatting update
 
-# 0.1.5 -- remove ethjs-sha3 for js-sha3
+# 0.1.5 -- remove vapjs-sha3 for js-sha3
 
-1. Removed `ethjs-sha3` for `js-sha3`.
+1. Removed `vapjs-sha3` for `js-sha3`.
 
 # 0.1.4 -- fix object mutation
 
-1. Fix object mutation with eth_call, eth_sendTransaction
+1. Fix object mutation with vap_call, vap_sendTransaction
 
 # 0.1.3 -- config fixes
 
 1. Webpack config updates
 2. Build config updates
 
-# 0.1.2 -- ethjs-abi update
+# 0.1.2 -- vapjs-abi update
 
-1. Updated ethjs-abi module
+1. Updated vapjs-abi module
 2. More docs
 
 # 0.1.1 -- new event object
@@ -32,7 +32,7 @@
 2. More coverage
 3. Package upgrades
 
-# 0.0.1 -- ethjs-contract
+# 0.0.1 -- vapjs-contract
 
 1. Basic testing
 2. Basic docs

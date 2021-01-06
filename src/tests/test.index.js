@@ -1,13 +1,13 @@
 require('hard-rejection')();
-const EthContract = require('../index.js');
-const Eth = require('ethjs-query');
+const VapContract = require('../index.js');
+const Vap = require('vapjs-query');
 const GanacheCore = require('ganache-core');
 const assert = require('chai').assert;
 const BN = require('bn.js'); // eslint-disable-line
 const asyncWaterfall = require('async/waterfall');
 const TestContracts = require('./test-contracts');
 
-describe('EthContract', () => {
+describe('VapContract', () => {
   let provider;
   beforeEach(() => {
     provider = GanacheCore.provider();
@@ -15,8 +15,8 @@ describe('EthContract', () => {
 
   describe('should function normally', () => {
     it('should work normally with callbacks', (done) => {
-      const eth = new Eth(provider);
-      const contract = new EthContract(eth);
+      const vap = new Vap(provider);
+      const contract = new VapContract(eth);
       assert.equal(typeof contract, 'function');
 
       let SimpleStore;
@@ -27,7 +27,7 @@ describe('EthContract', () => {
 
       asyncWaterfall([
         (cb) => {
-          eth.accounts(cb);
+          vap.accounts(cb);
         },
         (accounts, cb) => {
           assert.equal(Array.isArray(accounts), true);
@@ -43,7 +43,7 @@ describe('EthContract', () => {
           cb();
         },
         (cb) => {
-          eth.getTransactionReceipt(newResult, cb);
+          vap.getTransactionReceipt(newResult, cb);
         },
         (receipt, cb) => {
           assert.equal(typeof receipt, 'object');
@@ -67,7 +67,7 @@ describe('EthContract', () => {
           cb();
         },
         (cb) => {
-          eth.getTransactionReceipt(setResult, cb);
+          vap.getTransactionReceipt(setResult, cb);
         },
         (setTxReceipt, cb) => {
           assert.equal(typeof setTxReceipt, 'object');
@@ -82,14 +82,14 @@ describe('EthContract', () => {
     });
 
     it('should work normally with promises', async () => {
-      const eth = new Eth(provider);
-      const { simpleStore } = await deploySimpleStore({ eth });
+      const vap = new Vap(provider);
+      const { simpleStore } = await deploySimpleStore({ vap });
 
       const setNumberValue = 4500;
       const setResult = await simpleStore.set(setNumberValue);
       assert.equal(typeof setResult, 'string');
 
-      const setTxReceipt = await eth.getTransactionReceipt(setResult);
+      const setTxReceipt = await vap.getTransactionReceipt(setResult);
       assert.equal(typeof setTxReceipt, 'object');
 
       const getResult = await simpleStore.get();
@@ -106,7 +106,7 @@ describe('EthContract', () => {
         const self = this;
         const parsedPayload = payload;
 
-        if (parsedPayload.method === 'eth_getFilterChanges') {
+        if (parsedPayload.method === 'vap_getFilterChanges') {
           self.provider.sendAsync(payload, () => {
             const fakeEventLog = {
               id: parsedPayload.id,
@@ -130,8 +130,8 @@ describe('EthContract', () => {
         }
       };
 
-      const eth = new Eth(new FakeProvider());
-      const { simpleStore } = await deploySimpleStore({ eth });
+      const vap = new Vap(new FakeProvider());
+      const { simpleStore } = await deploySimpleStore({ vap });
       const { watchPromise } = await simpleStorePerformSetAndWatchOnce({ simpleStore });
 
       try {
@@ -153,7 +153,7 @@ describe('EthContract', () => {
         const self = this;
         const parsedPayload = payload;
 
-        if (parsedPayload.method === 'eth_getFilterChanges') {
+        if (parsedPayload.method === 'vap_getFilterChanges') {
           self.provider.sendAsync(payload, () => {
             const fakeEventLog = {
               id: parsedPayload.id,
@@ -168,8 +168,8 @@ describe('EthContract', () => {
         }
       };
 
-      const eth = new Eth(new FakeProvider());
-      const { simpleStore } = await deploySimpleStore({ eth });
+      const vap = new Vap(new FakeProvider());
+      const { simpleStore } = await deploySimpleStore({ vap });
       const { watchPromise } = await simpleStorePerformSetAndWatchOnce({ simpleStore });
 
       try {
@@ -191,7 +191,7 @@ describe('EthContract', () => {
         const self = this;
         const parsedPayload = payload;
 
-        if (parsedPayload.method === 'eth_getFilterChanges') {
+        if (parsedPayload.method === 'vap_getFilterChanges') {
           self.provider.sendAsync(payload, () => {
             const fakeEventLog = {
               id: parsedPayload.id,
@@ -215,8 +215,8 @@ describe('EthContract', () => {
         }
       };
 
-      const eth = new Eth(new FakeProvider());
-      const { simpleStore } = await deploySimpleStore({ eth });
+      const vap = new Vap(new FakeProvider());
+      const { simpleStore } = await deploySimpleStore({ vap });
       const { watchPromise } = await simpleStorePerformSetAndWatchOnce({ simpleStore });
 
       try {
@@ -238,7 +238,7 @@ describe('EthContract', () => {
         const self = this;
         const parsedPayload = payload;
 
-        if (parsedPayload.method === 'eth_getFilterChanges') {
+        if (parsedPayload.method === 'vap_getFilterChanges') {
           self.provider.sendAsync(payload, () => {
             const fakeEventLog = {
               id: parsedPayload.id,
@@ -253,8 +253,8 @@ describe('EthContract', () => {
         }
       };
 
-      const eth = new Eth(new FakeProvider());
-      const { simpleStore } = await deploySimpleStore({ eth });
+      const vap = new Vap(new FakeProvider());
+      const { simpleStore } = await deploySimpleStore({ vap });
       const { watchPromise } = await simpleStorePerformSetAndWatchOnce({ simpleStore });
 
       try {
@@ -276,7 +276,7 @@ describe('EthContract', () => {
         const self = this;
         const parsedPayload = payload;
 
-        if (parsedPayload.method === 'eth_call') {
+        if (parsedPayload.method === 'vap_call') {
           self.provider.sendAsync(payload, () => {
             const fakeEventLog = {
               id: parsedPayload.id,
@@ -291,8 +291,8 @@ describe('EthContract', () => {
         }
       };
 
-      const eth = new Eth(new FakeProvider());
-      const { simpleStore } = await deploySimpleStore({ eth });
+      const vap = new Vap(new FakeProvider());
+      const { simpleStore } = await deploySimpleStore({ vap });
 
       try {
         await simpleStore.get();
@@ -305,9 +305,9 @@ describe('EthContract', () => {
     });
 
     it('should construct properly with some overriding txObjects', async () => {
-      const eth = new Eth(provider);
+      const vap = new Vap(provider);
 
-      const accounts = await eth.accounts();
+      const accounts = await vap.accounts();
       const firstFrom = accounts[3];
       const secondFrom = accounts[6];
 
@@ -321,7 +321,7 @@ describe('EthContract', () => {
     });
 
     it('should construct properly with hexed bytecode', async () => {
-      const eth = new Eth(provider);
+      const vap = new Vap(provider);
       const newOpts = {
         data: TestContracts.SimpleStore.bytecode,
       };
@@ -330,7 +330,7 @@ describe('EthContract', () => {
     });
 
     it('should construct properly with no default tx bytecode', async () => {
-      const eth = new Eth(provider);
+      const vap = new Vap(provider);
       const newOpts = {
         data: TestContracts.SimpleStore.bytecode,
       };
@@ -339,8 +339,8 @@ describe('EthContract', () => {
     });
 
     it('should construct properly with no default tx object when specified in new', async () => {
-      const eth = new Eth(provider);
-      const accounts = await eth.accounts();
+      const vap = new Vap(provider);
+      const accounts = await vap.accounts();
       const newOpts = {
         from: accounts[0],
         gas: 300000,
@@ -350,22 +350,22 @@ describe('EthContract', () => {
     });
 
     it('should construct properly constructor params', async () => {
-      const eth = new Eth(provider);
-      await deployAndTestComplexStore({ eth });
+      const vap = new Vap(provider);
+      await deployAndTestComplexStore({ vap });
     });
 
     it('should construct properly constructor params and overriding tx object', async () => {
-      const eth = new Eth(provider);
-      const accounts = await eth.accounts();
+      const vap = new Vap(provider);
+      const accounts = await vap.accounts();
       const newTxParams = { from: accounts[3] };
       const { deployTx } = await deployAndTestComplexStore({ eth, newTxParams });
       assert.equal(deployTx.from, accounts[3]);
     });
 
     it('should handle multi-type set and multi-type return', async () => {
-      const eth = new Eth(provider);
-      const contract = new EthContract(eth);
-      const accounts = await eth.accounts();
+      const vap = new Vap(provider);
+      const contract = new VapContract(eth);
+      const accounts = await vap.accounts();
 
       const initalValue = 730483222;
       const initalAddressArray = [accounts[3], accounts[2], accounts[1]];
@@ -376,7 +376,7 @@ describe('EthContract', () => {
       const deployTxHash = await SimpleStore.new(initalValue, initalAddressArray, { from: accounts[3] });
       assert.equal(typeof deployTxHash, 'string');
 
-      const setTxReceipt = await eth.getTransactionReceipt(deployTxHash);
+      const setTxReceipt = await vap.getTransactionReceipt(deployTxHash);
       const extraComplexStore = SimpleStore.at(setTxReceipt.contractAddress);
 
       const args = [
@@ -404,7 +404,7 @@ describe('EthContract', () => {
         [12342, 923849, new BN('249829233')],
       ];
       const multiTypeSetTxHash = await extraComplexStore.multiTypeSet(...args);
-      const multiSetReceipt = await eth.getTransactionReceipt(multiTypeSetTxHash);
+      const multiSetReceipt = await vap.getTransactionReceipt(multiTypeSetTxHash);
       assert.equal(typeof multiSetReceipt, 'object');
 
       const multiReturn = await extraComplexStore.multiTypeReturn();
@@ -429,10 +429,10 @@ describe('EthContract', () => {
 });
 
 async function deploySimpleStore({ eth, defaultTxObject, newOpts = {}, contractBytecode }) {
-  const contract = new EthContract(eth);
+  const contract = new VapContract(eth);
   assert.equal(typeof contract, 'function');
 
-  const accounts = await eth.accounts();
+  const accounts = await vap.accounts();
   assert.equal(Array.isArray(accounts), true);
 
   // set `defaultTxObject` option to null to omit
@@ -448,11 +448,11 @@ async function deploySimpleStore({ eth, defaultTxObject, newOpts = {}, contractB
   assert.ok(deployTxHash);
   assert.equal(typeof deployTxHash, 'string');
 
-  const deployTx = await eth.getTransactionByHash(deployTxHash);
+  const deployTx = await vap.getTransactionByHash(deployTxHash);
   assert.ok(deployTx);
   assert.equal(typeof deployTx, 'object');
 
-  const deployTxRx = await eth.getTransactionReceipt(deployTxHash);
+  const deployTxRx = await vap.getTransactionReceipt(deployTxHash);
   assert.equal(typeof deployTxRx, 'object');
   assert.equal(typeof deployTxRx.contractAddress, 'string');
 
@@ -502,10 +502,10 @@ async function simpleStorePerformSetAndGet({ eth, simpleStore, setNumberValue = 
   const setTxHash = await simpleStore.set(setNumberValue, setOpts);
   assert.equal(typeof setTxHash, 'string');
 
-  const setTx = await eth.getTransactionByHash(setTxHash);
+  const setTx = await vap.getTransactionByHash(setTxHash);
   assert.ok(setTx);
   assert.equal(typeof setTx, 'object');
-  const setTxReceipt = await eth.getTransactionReceipt(setTxHash);
+  const setTxReceipt = await vap.getTransactionReceipt(setTxHash);
   assert.equal(typeof setTxReceipt, 'object');
 
   const getResult = await simpleStore.get();
@@ -516,8 +516,8 @@ async function simpleStorePerformSetAndGet({ eth, simpleStore, setNumberValue = 
 }
 
 async function deployAndTestComplexStore({ eth, newTxParams }) {
-  const accounts = await eth.accounts();
-  const contract = new EthContract(eth);
+  const accounts = await vap.accounts();
+  const contract = new VapContract(eth);
 
   const defaultTxObject = { from: accounts[0], gas: 300000 };
   const ComplexStore = contract(TestContracts.ComplexStore.abi, TestContracts.ComplexStore.bytecode, defaultTxObject);
@@ -532,8 +532,8 @@ async function deployAndTestComplexStore({ eth, newTxParams }) {
     deployTxHash = await ComplexStore.new(initialValue, initialAddressArray);
   }
 
-  const deployTx = await eth.getTransactionByHash(deployTxHash);
-  const deployTxRx = await eth.getTransactionReceipt(deployTxHash);
+  const deployTx = await vap.getTransactionByHash(deployTxHash);
+  const deployTxRx = await vap.getTransactionReceipt(deployTxHash);
   const complexStore = ComplexStore.at(deployTxRx.contractAddress);
 
   const addressResult0 = await complexStore.addresses(0);
