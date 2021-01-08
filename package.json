@@ -199,6 +199,7 @@
   },
   "main": "lib/index.js",
   "name": "vapjs-contract",
+  "namespace": "vapjs",
   "pre-commit": "build",
   "repository": {
     "type": "git",
