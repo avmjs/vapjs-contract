@@ -1,8 +1,8 @@
-const abi = require('ethjs-abi'); // eslint-disable-line
-const sha3 = require('ethjs-sha3'); // eslint-disable-line
-const EthFilter = require('ethjs-filter'); // eslint-disable-line
-const getKeys = require('ethjs-util').getKeys; // eslint-disable-line
-const arrayContainsArray = require('ethjs-util').arrayContainsArray;
+const abi = require('vapjs-abi'); // eslint-disable-line
+const sha3 = require('vjs-sha3'); // eslint-disable-line
+const VapFilter = require('vapjs-filter'); // eslint-disable-line
+const getKeys = require('vapjs-util').getKeys; // eslint-disable-line
+const arrayContainsArray = require('vapjs-util').arrayContainsArray;
 
 function hasTransactionObject(args) {
   const txObjectProperties = ['from', 'to', 'data', 'value', 'gasPrice', 'gas'];
@@ -38,7 +38,7 @@ function contractFactory(query) {
         self.address = address || '0x';
         self.bytecode = contractBytecode || '0x';
         self.defaultTxObject = contractDefaultTxObject || {};
-        self.filters = new EthFilter(query);
+        self.filters = new VapFilter(query);
 
         getCallableMethodsFromABI(contractABI).forEach((methodObject) => {
           self[methodObject.name] = function contractMethod() { // eslint-disable-line
@@ -117,8 +117,8 @@ function contractFactory(query) {
   };
 }
 
-function EthContract(query) {
+function VapContract(query) {
   return contractFactory(query);
 }
 
-module.exports = EthContract;
+module.exports = VapContract;

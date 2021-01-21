@@ -1,7 +1,8 @@
 {
-  "name": "ethjs-contract",
+  "name": "vapjs-contract",
+  "namespace": "vapjs",
   "version": "0.0.1",
-  "description": "A simple contract object for the Ethereum RPC.",
+  "description": "A simple contract object for the Vapory RPC.",
   "main": "src/index.js",
   "scripts": {
     "start": "npm test",
@@ -16,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/silentcicero/ethjs-contract.git"
+    "url": "git+ssh://git@github.com/vapjs/vapjs-contract.git"
   },
   "dependencies": {
-    "ethjs-util": "0.0.3",
-    "ethjs-abi": "0.0.1",
-    "ethjs-query": "0.0.2",
-    "ethjs-filter": "0.0.1",
-    "ethjs-sha3": "0.0.1"
+    "vapjs-util": "0.0.3-a",
+    "vapjs-abi": "0.0.1",
+    "vapjs-query": "0.0.2",
+    "vapjs-filter": "0.0.1",
+    "vjs-sha3": "0.0.1"
   },
   "devDependencies": {
     "babel-eslint": "7.1.0",
@@ -35,11 +36,11 @@
     "eslint-plugin-import": "1.8.0",
     "eslint-plugin-jsx-a11y": "1.2.0",
     "eslint-plugin-react": "5.1.1",
-    "ethereumjs-testrpc": "^3.0.2",
-    "ethjs-util": "0.0.2",
-    "ethjs-abi": "0.0.1",
-    "ethjs-query": "0.0.2",
-    "ethjs-sha3": "0.0.1",
+    "vaporyjs-testrpc": "3.0.1",
+    "vapjs-util": "0.0.2",
+    "vapjs-abi": "0.0.1",
+    "vapjs-query": "0.0.2",
+    "vjs-sha3": "0.0.1",
     "eventsource-polyfill": "0.9.6",
     "lint-staged": "1.0.1",
     "mocha": "3.1.2",
@@ -50,16 +51,16 @@
     "node": ">=6.5.0"
   },
   "keywords": [
-    "ethereum",
+    "vapory",
     "events",
     "rpc"
   ],
   "author": "Nick Dodson <nick.dodson@consensys.net>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/silentcicero/ethjs-contract/issues"
+    "url": "https://github.com/vapjs/vapjs-contract/issues"
   },
-  "homepage": "https://github.com/silentcicero/ethjs-contract#readme",
+  "homepage": "https://github.com/vapjs/vapjs-contract#readme",
   "babel": {
     "presets": [
       "es2015"

@@ -1,4 +1,4 @@
-# 0.0.1 -- ethjs-contract
+# 0.0.1 -- vapjs-contract
 
 1. Basic testing
 2. Basic docs

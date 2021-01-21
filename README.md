@@ -1,26 +1,26 @@
-## ethjs-contract
+## vapjs-contract
 
 <div>
   <!-- Dependency Status -->
-  <a href="https://david-dm.org/SilentCicero/ethjs-contract">
-    <img src="https://david-dm.org/SilentCicero/ethjs-contract.svg"
+  <a href="https://david-dm.org/Vapjs/vapjs-contract">
+    <img src="https://david-dm.org/Vapjs/vapjs-contract.svg"
     alt="Dependency Status" />
   </a>
 
   <!-- devDependency Status -->
-  <a href="https://david-dm.org/SilentCicero/ethjs-contract#info=devDependencies">
-    <img src="https://david-dm.org/SilentCicero/ethjs-contract/dev-status.svg" alt="devDependency Status" />
+  <a href="https://david-dm.org/Vapjs/vapjs-contract#info=devDependencies">
+    <img src="https://david-dm.org/Vapjs/vapjs-contract/dev-status.svg" alt="devDependency Status" />
   </a>
 
   <!-- Build Status -->
-  <a href="https://travis-ci.org/SilentCicero/ethjs-contract">
-    <img src="https://travis-ci.org/SilentCicero/ethjs-contract.svg"
+  <a href="https://travis-ci.org/Vapjs/vapjs-contract">
+    <img src="https://travis-ci.org/Vapjs/vapjs-contract.svg"
     alt="Build Status" />
   </a>
 
   <!-- NPM Version -->
-  <a href="https://www.npmjs.org/package/ethjs-contract">
-    <img src="http://img.shields.io/npm/v/ethjs-contract.svg"
+  <a href="https://www.npmjs.org/package/vapjs-contract">
+    <img src="http://img.shields.io/npm/v/vapjs-contract.svg"
     alt="NPM version" />
   </a>
 
@@ -32,23 +32,23 @@
 
 <br />
 
-A simple contract module for the Ethereum RPC layer.
+A simple contract module for the Vapory RPC layer.
 
 NOTE. Module not ready for use, still in heavy development.
 
 ## Install
 
 ```
-npm install --save ethjs-contract
+npm install --save vapjs-contract
 ```
 
 ## Usage
 
 ```js
-const Eth = require('ethjs-query');
-const EthContract = require('ethjs-contract');
-const eth = new Eth(provider);
-const contract = new EthContract(eth);
+const Vap = require('vapjs-query');
+const VapContract = require('vapjs-contract');
+const vap = new Vap(provider);
+const contract = new VapContract(vap);
 
 const SimpleStore = contract(abi, bytecode, defaultTxObject);
 const simpleStore = SimpleStore.at('0x000...');
@@ -77,7 +77,7 @@ filter.stopWatching((error, result) => {
 
 ## About
 
-A simple contract object for the Ethereum RPC layer.
+A simple contract object for the Vapory RPC layer.
 
 ## Contributing
 
@@ -106,13 +106,13 @@ There is always a lot of work to do, and will have many rules to maintain. So pl
 
 Please consult our [Code of Conduct](CODE_OF_CONDUCT.md) docs before helping out.
 
-We communicate via [issues](https://github.com/SilentCicero/ethjs-contract/issues) and [pull requests](https://github.com/SilentCicero/ethjs-contract/pulls).
+We communicate via [issues](https://github.com/Vapjs/vapjs-contract/issues) and [pull requests](https://github.com/Vapjs/vapjs-contract/pulls).
 
 ## Important documents
 
 - [Changelog](CHANGELOG.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
-- [License](https://raw.githubusercontent.com/SilentCicero/ethjs-contract/master/LICENSE)
+- [License](https://raw.githubusercontent.com/Vapjs/vapjs-contract/master/LICENSE)
 
 ## Licence
 
